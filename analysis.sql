@@ -1,48 +1,29 @@
 -- German Credit Risk Analysis
--- Dataset: 1,000 loan applicants
+-- Dataset: UCI Statlog German Credit dataset - 1,000 loan applicants
+-- RESPONSE: 1 = Good Risk, 0 = Bad Risk
+-- Amounts are in DM (Deutsche Mark)
 
 CREATE DATABASE IF NOT EXISTS german_credit;
 USE german_credit;
 
--- Rename table and inspect structure
-RENAME TABLE `german credit` TO `credit`;
+-- Run only once: table was originally named `german credit`
+-- RENAME TABLE `german credit` TO `credit`;
 
-SHOW TABLES;
-SHOW COLUMNS FROM credit;
-SELECT COUNT(*) AS total_customers FROM credit;
-SELECT * FROM credit LIMIT 1;
-
--- 1. Customers by risk group
+-- Question 1: How many customers are Good vs Bad?
 SELECT RESPONSE, COUNT(*) AS customers
 FROM credit
 GROUP BY RESPONSE;
 
--- 2. Average loan amount by risk group
+-- Question 2: Do Bad customers borrow more?
 SELECT RESPONSE,
        ROUND(AVG(AMOUNT), 0) AS avg_loan_amount,
        COUNT(*) AS customers
 FROM credit
 GROUP BY RESPONSE;
 
--- 3. Average loan duration by risk group
+-- Question 3: Do longer loans fail more?
 SELECT RESPONSE,
        ROUND(AVG(DURATION), 1) AS avg_duration_months,
        COUNT(*) AS customers
 FROM credit
 GROUP BY RESPONSE;
-
--- 4. Default rate by loan purpose
-SELECT PURPOSE,
-       COUNT(*) AS customers,
-       ROUND(SUM(CASE WHEN RESPONSE = 'Bad Risk' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS bad_risk_pct
-FROM credit
-GROUP BY PURPOSE
-ORDER BY bad_risk_pct DESC;
-
--- 5. Default rate by housing
-SELECT HOUSING,
-       COUNT(*) AS customers,
-       ROUND(SUM(CASE WHEN RESPONSE = 'Bad Risk' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS bad_risk_pct
-FROM credit
-GROUP BY HOUSING
-ORDER BY bad_risk_pct DESC;
