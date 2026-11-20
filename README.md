@@ -11,25 +11,25 @@ German Credit Dataset — 1,000 applicants classified as:
 Includes: credit amount, duration, age, employment, housing, checking account status, purpose, and credit history.
 
 ## Business Questions
-1. What separates Good vs Bad credit risks?
-2. Do loan amount and duration affect default risk?
-3. Which applicant profiles are highest risk?
+- What separates Good vs Bad credit risks?
+- Do loan amount and duration affect default risk?
+- Which applicant profiles are highest risk?
 
 ## Key Findings
-- Bad-risk applicants took larger loans on average than Good-risk applicants
-- Bad-risk applicants took longer loan durations on average
+- Bad-risk applicants took larger loans on average: **3,938 vs 2,985 for Good-risk** (+32% higher)
+- Bad-risk applicants took longer loans on average: **24.9 months vs 19.2 months for Good-risk** (+5.7 months longer)
 - Applicants with no checking account or low checking balance were more likely to be Bad risk
 - Younger applicants and those with poor credit history showed higher default risk
 
 ## Tools Used
-- SQL
+- SQL (MySQL)
 - GitHub
 
 ## Files
-- `german_credit_analysis.sql` — All analysis queries
+- `analysis.sql` — All analysis queries
 - `README.md` — Project documentation
 
 ## How to Run
 1. Load the German Credit dataset into your SQL database
-2. Run the queries in `german_credit_analysis.sql`
+2. Run the queries in `analysis.sql`
 3. Review the results by risk group
