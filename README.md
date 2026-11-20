@@ -6,11 +6,12 @@ Goal: Help a bank spot risky loans before approving them.
 
 ## Dataset
 
-Source: UCI Statlog German Credit dataset
-Rows: 1,000 loan applicants
-Table: credit in database german_credit
-Amounts are in Deutsche Marks (DM)
-Target column: RESPONSE (1 = Good, 0 = Bad credit risk)
+- Source: UCI Statlog German Credit dataset
+- Rows: 1,000 loan applicants
+- Table: credit in database german_credit
+- Amounts are in Deutsche Marks (DM)
+- Target column: RESPONSE (1 = Good, 0 = Bad credit risk)
+- Download: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data)
 
 ## Question 1: How many customers are Good vs Bad?
 
@@ -62,6 +63,7 @@ Good customers tend to take smaller, shorter loans. Bad customers tend to take b
 
 ## How to Run
 
-1. Load the German Credit dataset into your SQL database
-2. Run the queries in `analysis.sql`
-3. Review the results by risk group
+1. Download the dataset from the UCI link above
+2. Load the German Credit dataset into your SQL database
+3. Run the queries in `analysis.sql`
+4. Review the results by risk group
